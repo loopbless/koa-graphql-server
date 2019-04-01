@@ -1,0 +1,41 @@
+{
+  "name": "koa-graphql-server",
+  "version": "0.0.1",
+  "description": "a koa project with graphql",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon --config nodemon.json"
+  },
+  "dependencies": {
+    "@types/graphql": "^14.2.0",
+    "bluebird": "^3.5.3",
+    "global": "^4.3.2",
+    "graphql": "^14.2.1",
+    "graphql-server-koa": "^1.4.0",
+    "hiredis": "^0.5.0",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "oauth2-server": "^3.0.1",
+    "redis": "^2.8.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.16"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.26",
+    "@types/koa": "^2.0.48",
+    "@types/koa-bodyparser": "^4.2.2",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.0.40",
+    "@types/mysql": "^2.15.5",
+    "@types/oauth2-server": "^3.0.10",
+    "@types/redis": "^2.8.11",
+    "@types/validator": "^10.11.0",
+    "nodemon": "^1.18.10",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.3.2"
+  }
+}
