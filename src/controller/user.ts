@@ -1,5 +1,4 @@
 import { Router, Params, GET, Autowired } from '../core/router';
-// import { get, list } from '../model/user';
 import { getRepository } from 'typeorm';
 import { User } from '../entities/user';
 import { UserDao } from '../model/user';

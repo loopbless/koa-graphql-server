@@ -23,6 +23,8 @@ export class UserDao extends Base<User> {
       .createQueryBuilder()
       .offset(offset)
       .limit(limit)
-      .getManyAndCount();
+      .getManyAndCount().then(data => {
+        return {totals: data[1], results: data[0]};
+      });
   }
 }

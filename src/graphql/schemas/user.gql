@@ -1,0 +1,15 @@
+type User {
+  id: ID
+  username: String
+  email: String
+  avatar: String
+}
+type PageUsers {
+  totals: Int
+  results: [User]
+}
+
+type Query {
+  user(id: Int!): User
+  users(offset: Int!, limit: Int!): PageUsers
+}

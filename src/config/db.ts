@@ -3,6 +3,7 @@ import { createPool } from 'mysql';
 import { createConnection, Connection } from 'typeorm';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 import { entities } from '../entities';
+import { GLOBAL_CONFIG } from './config';
 
 export const redisCfg = {
   host: 'localhost',
@@ -33,12 +34,14 @@ export const createDBConnection = async () => {
       console.log('mysql connect fail!', err);
       return err;
     });
-  return await connection
-    .synchronize(true)
-    .then(() => {
-      console.log('mysql table synchronize success!');
-    })
-    .catch((err: any) => {
-      console.log('mysql table synchronize fail!', err);
-    });
+    if(GLOBAL_CONFIG.synchronizeTable) {
+      await connection
+        .synchronize(true)
+        .then(() => {
+          console.log('mysql table synchronize success!');
+        })
+        .catch((err: any) => {
+          console.log('mysql table synchronize fail!', err);
+        });
+    }
 };
