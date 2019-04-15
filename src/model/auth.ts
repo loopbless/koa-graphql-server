@@ -18,7 +18,7 @@ const formats = {
 /**
  * 获取token
  * @param {string} bearerToken - 承载令牌
- * @returns {Promise<Token>} 
+ * @returns {Promise<Token>}
  */
 export async function getAccessToken(bearerToken: string): Promise<Token> {
   let token: any = await redis.hgetall(fmt(formats.token, bearerToken));
@@ -109,6 +109,23 @@ export async function saveToken(
     refreshTokenExpiresAt: token.refreshTokenExpiresAt
   };
   await redis.hmset(fmt(formats.token, token.accessToken), data);
+  await redis.expire(
+    fmt(formats.token, token.accessToken),
+    expireTimehandler(token.accessTokenExpiresAt)
+  );
   await redis.hmset(fmt(formats.user, token.accessToken), user);
+  await redis.expire(
+    fmt(formats.user, token.accessToken),
+    expireTimehandler(token.refreshTokenExpiresAt)
+  );
   return { ...data, user, client };
+}
+
+/**
+ * 计算过期时长
+ * @param {Date} time 过期时间
+ */
+function expireTimehandler(time: Date) {
+  const betweenTime = time.getTime() - new Date().getTime();
+  return parseInt((betweenTime / 1000).toFixed(0));
 }

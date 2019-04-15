@@ -1,15 +1,15 @@
-import { Router, Params, GET, Autowired } from '../core/router';
+import { Router, Params, Get, Autowired } from '../core/router';
 import { getRepository } from 'typeorm';
 import { User } from '../entities/user';
 import { UserDao } from '../model/user';
 
-@Router('/user')
+@Router('/users')
 export class UserController {
 
   @Autowired(UserDao)
   private user: UserDao;
 
-  @GET(':id')
+  @Get(':id')
   async get(@Params('id') id: string) {
     try {
       const userId = parseInt(id);
@@ -19,7 +19,7 @@ export class UserController {
     }
   }
 
-  @GET('')
+  @Get('')
   async list() {
     return await this.user.list(0, 2);
   }

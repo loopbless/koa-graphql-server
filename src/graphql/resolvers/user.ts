@@ -1,4 +1,3 @@
-import { Autowired } from '../../core/router';
 import { UserDao } from '../../model/user';
 import { Context } from 'koa';
 

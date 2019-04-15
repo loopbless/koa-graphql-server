@@ -1,0 +1,15 @@
+type Posts {
+  id: ID
+  title: String
+  content: String
+  user: User
+}
+type PagePosts {
+  totals: Int
+  results: [Posts]
+}
+
+type Query {
+  post(id: Int!): Posts
+  posts(offset: Int!, limit: Int!): PagePosts
+}

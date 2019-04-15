@@ -9,7 +9,7 @@ export class Base {
   createBy: number;
 
   @Column({
-    type: Date,
+    type: 'datetime',
     name: 'create_at'
   })
   createdAt: Date;

@@ -19,7 +19,9 @@ export const mysqlCfg: MysqlConnectionOptions = {
   username: 'root',
   password: 'root',
   database: 'range_bt',
-  entities: entities
+  entities: entities,
+  logging: 'all',
+  synchronize: GLOBAL_CONFIG.synchronizeTable
 };
 
 export const createDBConnection = async () => {
@@ -34,14 +36,4 @@ export const createDBConnection = async () => {
       console.log('mysql connect fail!', err);
       return err;
     });
-    if(GLOBAL_CONFIG.synchronizeTable) {
-      await connection
-        .synchronize(true)
-        .then(() => {
-          console.log('mysql table synchronize success!');
-        })
-        .catch((err: any) => {
-          console.log('mysql table synchronize fail!', err);
-        });
-    }
 };

@@ -80,7 +80,7 @@ export function Params(paramKey: string): ParameterDecorator {
   };
 }
 
-export function GET(path: string): MethodDecorator {
+export function Get(path: string): MethodDecorator {
   return (target: any, methodKey: string, descriptor: any) => {
     new Promise(resolve => resolve()).then(() => {
       if (typeof target === 'object') {
